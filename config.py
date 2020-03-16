@@ -1,0 +1,4 @@
+mailToAddress = ""
+mailServer = ""
+mailFromAddress = ""
+mailFromPassword = ""
