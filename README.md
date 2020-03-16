@@ -20,6 +20,10 @@ This is the repo of a script used to email me all the companies as they go on sa
 	
 	As we are working with the google sheets api, we need to create a proyect in the google apis platform and share access to the spreadsheet to the mail provided by the api as you create the credentials.
 
+* Lastly, the email sender is using a config file, that is empty in the repo. Update the config.py file with your information.
+
+	![Config file](resources/config_file.png)
+
 # Usage
 This app is useful if we are working with a spreadsheet already, or we are willing to create a new one, as it gets the values of the spreadsheet and emails you if the company's buyprices is higher or equal than the current close price. Example of spreadsheet:
 
