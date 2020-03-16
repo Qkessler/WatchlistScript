@@ -48,12 +48,9 @@ def construct_companies(tickers, prices, buyprices):
         companies.append(Company(tickers[_], prices[_], float(buyprices[_])))
     return companies
 
-
-# prices_and_buyprices
 def email_buyprice(companies):
     week = timedelta(days=7)
     for company in companies:
-        # Vamos a suponer que hacemos todos los cálculos y mandamos un correo.
         last_company = None
         with open('watchlist.log', 'r') as f:
             for line in f.readlines():
@@ -63,10 +60,9 @@ def email_buyprice(companies):
             pat = re.compile('\d+-\d+-\d+')
             date_str = pat.findall(last_company)
             date = datetime.strptime(date_str[0], '%Y-%m-%d').date()
-            # print(date)
         if not last_company or date <= datetime.date(datetime.today()) - week:
             if company.price <= company.buyprice:
-                body = f'Hola Quique,\nLa compañía {company.ticker} está por debajo de su precio de compra, de forma que deberías echarle un ojo.\nUn saludo,\n Quique.'
+                body = f'Hey Quique,\nThe company {company.ticker} is under its buyprice, You should check it out!\nBye,\n Quique.'
                 subject = f'Company {company.ticker} is on sale!'
                 app_log.trace(f'Email was sent on company "{company.ticker}"')
                 send_email(body, subject)   
