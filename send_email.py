@@ -1,10 +1,11 @@
 # I import my secret config. I have created a config file for other users,
 # just update the info there and uncomment the next line.
 # import config
-import secret_config
+import secret_config as config
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+
 
 def send_email(body, subject):
     msg = MIMEMultipart()
