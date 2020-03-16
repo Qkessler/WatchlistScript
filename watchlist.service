@@ -1,0 +1,11 @@
+[Unit]
+Description=Watchlist service
+After=multi-user.target
+
+[Service]
+Type=idle
+
+ExecStart=/home/qkessler/Documents/watchlist_script/.env/bin/python3 /home/qkessler/Documents/watchlist_script/program.py
+
+[Install]
+WantedBy=multi-user.target

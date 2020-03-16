@@ -15,7 +15,7 @@ app_log = logbook.Logger('App')
 
 def init_spreadsheet():
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_name('/home/qkessler/Documents/watchlist_script/client_secret.json', scope)
     client = gspread.authorize(creds)
     sheet = client.open('WATCHLIST').sheet1
     return sheet
@@ -52,7 +52,7 @@ def email_buyprice(companies):
     week = timedelta(days=7)
     for company in companies:
         last_company = None
-        with open('watchlist.log', 'r') as f:
+        with open('/home/qkessler/Documents/watchlist_script/watchlist.log', 'r') as f:
             for line in f.readlines():
                 if company.ticker in line:
                     last_company = line

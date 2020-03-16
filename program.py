@@ -13,5 +13,5 @@ def init_logging(filename: str = None):
     logger.notice(msg)
 
 if __name__ == '__main__':
-    init_logging("watchlist.log")
+    init_logging("/home/qkessler/Documents/watchlist_script/watchlist.log")
     watchlist.main()
