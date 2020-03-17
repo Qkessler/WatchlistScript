@@ -1,10 +1,7 @@
-import requests
 import yfinance
 import re
-from sys import argv
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from pprint import pprint
 from send_email import send_email
 from collections import namedtuple
 import logbook
@@ -13,20 +10,26 @@ from datetime import datetime, timedelta
 Company = namedtuple('Company', 'ticker price buyprice')
 app_log = logbook.Logger('App')
 
+
 def init_spreadsheet():
-    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name('/home/qkessler/Documents/watchlist_script/client_secret.json', scope)
+    scope = ['https://spreadsheets.google.com/feeds',
+             'https://www.googleapis.com/auth/drive']
+    creds = ServiceAccountCredentials.from_json_keyfile_name(
+        '/home/qkessler/Documents/watchlist_script/client_secret.json', scope)
     client = gspread.authorize(creds)
     sheet = client.open('WATCHLIST').sheet1
     return sheet
+
 
 def get_tickers(sheet):
     tickers = sheet.col_values(1)[2:]
     return tickers
 
+
 def get_buyprices(sheet):
     buyprices = sheet.col_values(2)[2:]
     return buyprices
+
 
 def get_prices(list_tickers):
     prices = []
@@ -41,6 +44,7 @@ def get_prices(list_tickers):
         prices.append(price)
     return prices
 
+
 def construct_companies(tickers, prices, buyprices):
     companies = []
     companies_length = len(tickers)
@@ -48,11 +52,13 @@ def construct_companies(tickers, prices, buyprices):
         companies.append(Company(tickers[_], prices[_], float(buyprices[_])))
     return companies
 
+
 def email_buyprice(companies):
     week = timedelta(days=7)
     for company in companies:
         last_company = None
-        with open('/home/qkessler/Documents/watchlist_script/watchlist.log', 'r') as f:
+        with open('/home/qkessler/Documents/watchlist_script/watchlist.log',
+                  'r') as f:
             for line in f.readlines():
                 if company.ticker in line:
                     last_company = line
@@ -62,7 +68,8 @@ def email_buyprice(companies):
             date = datetime.strptime(date_str[0], '%Y-%m-%d').date()
         if not last_company or date <= datetime.date(datetime.today()) - week:
             if company.price <= company.buyprice:
-                body = f'Hey Quique,\nThe company {company.ticker} is under its buyprice, You should check it out!\nBye,\n Quique.'
+                body = f'Hey Quique, \nThe company {company.ticker} is under
+ its buyprice, You should check it out!\nBye,\n Quique.'
                 subject = f'Company {company.ticker} is on sale!'
                 app_log.trace(f'Email was sent on company "{company.ticker}"')
                 send_email(body, subject)   

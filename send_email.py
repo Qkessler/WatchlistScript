@@ -13,14 +13,14 @@ def send_email(body, subject):
     msg['To'] = config.mailToAddress
     msg['Subject'] = subject
 
-    msg.attach(MIMEText(body,'plain'))
+    msg.attach(MIMEText(body, 'plain'))
     message = msg.as_string()
 
     try:
         server = smtplib.SMTP(config.mailServer)
         server.starttls()
         server.login(config.mailFromAddress, config.mailFromPassword)
-        
+
         server.sendmail(config.mailFromAddress, config.mailToAddress, message)
         server.quit()
         # print("SUCCESS - Email sent")
@@ -28,6 +28,3 @@ def send_email(body, subject):
     except Exception as e:
         print("FAILURE - Email not sent")
         print(e)
-
-
-
