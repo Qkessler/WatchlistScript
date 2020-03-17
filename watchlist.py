@@ -68,11 +68,13 @@ def email_buyprice(companies):
             date = datetime.strptime(date_str[0], '%Y-%m-%d').date()
         if not last_company or date <= datetime.date(datetime.today()) - week:
             if company.price <= company.buyprice:
-                body = f'Hey Quique, \nThe company {company.ticker} is under
- its buyprice, You should check it out!\nBye,\n Quique.'
+                body = f'Hey Quique, \nThe company {company.ticker}'
+                body += 'is under its buyprice, You should check it out!'
+                body += '\nBye,\n Quique.'
                 subject = f'Company {company.ticker} is on sale!'
                 app_log.trace(f'Email was sent on company "{company.ticker}"')
-                send_email(body, subject)   
+                send_email(body, subject)
+
 
 def main():
     sheet = init_spreadsheet()
