@@ -2,3 +2,19 @@
 [2020-03-16 17:30:14.627651] TRACE: App: Email was sent on company "EPD"
 [2020-03-16 17:31:22.233301] NOTICE: Startup: Logging initialized, level: 9, mode: file mode: watchlist.log
 [2020-03-16 17:31:24.764839] TRACE: App: Email was sent on company "TXRH"
+[2020-03-17 08:58:40.205374] NOTICE: Startup: Logging initialized, level: 9, mode: file mode: /home/qkessler/Documents/watchlist_script/watchlist.log
+[2020-03-17 09:45:02.189957] NOTICE: Startup: Logging initialized, level: 9, mode: file mode: /home/qkessler/Documents/watchlist_script/watchlist.log
+[2020-03-17 10:10:47.393577] NOTICE: Startup: Logging initialized, level: 9, mode: file mode: /home/qkessler/Documents/watchlist_script/watchlist.log
+[2020-03-18 07:11:22.193945] NOTICE: Startup: Logging initialized, level: 9, mode: file mode: /home/qkessler/Documents/watchlist_script/watchlist.log
+[2020-03-18 15:54:52.994545] NOTICE: Startup: Logging initialized, level: 9, mode: file mode: /home/qkessler/Documents/watchlist_script/watchlist.log
+[2020-03-19 07:00:41.422491] NOTICE: Startup: Logging initialized, level: 9, mode: file mode: /home/qkessler/Documents/watchlist_script/watchlist.log
+[2020-03-19 15:38:41.750714] NOTICE: Startup: Logging initialized, level: 9, mode: file mode: /home/qkessler/Documents/watchlist_script/watchlist.log
+[2020-03-20 06:57:41.292642] NOTICE: Startup: Logging initialized, level: 9, mode: file mode: /home/qkessler/Documents/watchlist_script/watchlist.log
+[2020-03-20 17:48:14.145294] NOTICE: Startup: Logging initialized, level: 9, mode: file mode: /home/qkessler/Documents/watchlist_script/watchlist.log
+[2020-03-21 07:00:46.953360] NOTICE: Startup: Logging initialized, level: 9, mode: file mode: /home/qkessler/Documents/watchlist_script/watchlist.log
+[2020-03-21 16:14:31.277937] NOTICE: Startup: Logging initialized, level: 9, mode: file mode: /home/qkessler/Documents/watchlist_script/watchlist.log
+[2020-03-21 19:40:50.577393] NOTICE: Startup: Logging initialized, level: 9, mode: file mode: /home/qkessler/Documents/watchlist_script/watchlist.log
+[2020-03-22 07:04:20.806394] NOTICE: Startup: Logging initialized, level: 9, mode: file mode: /home/qkessler/Documents/watchlist_script/watchlist.log
+[2020-03-23 07:05:10.909255] NOTICE: Startup: Logging initialized, level: 9, mode: file mode: /home/qkessler/Documents/watchlist_script/watchlist.log
+[2020-03-23 07:05:13.282672] TRACE: App: Email was sent on company "EPD"
+[2020-03-23 07:05:15.836098] TRACE: App: Email was sent on company "TXRH"
