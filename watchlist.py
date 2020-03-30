@@ -69,9 +69,9 @@ def email_buyprice(companies):
         if not last_company or date <= datetime.date(datetime.today()) - week:
             if company.price <= company.buyprice:
                 body = f'Hey Quique, \nThe company {company.ticker} '
-                body += 'is under its buyprice, You should check it out!'
-                body += '\nThe current price is {company.price}'
-                body += '\nBye,\n Quique.'
+                body += f'is under its buyprice, You should check it out!'
+                body += f'\nThe current price is {company.price}'
+                body += f'\nBye,\n Quique.'
                 subject = f'Company {company.ticker} is on sale!'
                 app_log.trace(f'Email was sent on company "{company.ticker}"')
                 send_email(body, subject)
