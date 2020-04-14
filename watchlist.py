@@ -63,7 +63,7 @@ def email_buyprice(companies):
                 if company.ticker in line:
                     last_company = line
         if last_company:
-            pat = re.compile('\d+-\d+-\d+')
+            pat = re.compile(r'\d+-\d+-\d+')
             date_str = pat.findall(last_company)
             date = datetime.strptime(date_str[0], '%Y-%m-%d').date()
         if not last_company or date <= datetime.date(datetime.today()) - week:
