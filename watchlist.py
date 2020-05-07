@@ -1,3 +1,4 @@
+import os
 import yfinance
 import re
 import gspread
@@ -10,12 +11,29 @@ from datetime import datetime, timedelta
 Company = namedtuple('Company', 'ticker price buyprice')
 app_log = logbook.Logger('App')
 
+MAIL_TO_ADDRESS = os.environ['MAIL_TO_ADDRESS']
+MAIL_SERVER = os.environ['MAIL_SERVER']
+MAIL_FROM_ADDRESS = os.environ['MAIL_FROM_ADDRESS']
+MAIL_FROM_PASSWORD = os.environ['MAIL_FROM_PASSWORD']
+CLIENT_SECRET = os.environ['CLIENT_SECRET']
+
+
+def main():
+    print(CLIENT_SECRET)
+    # sheet = init_spreadsheet()
+    # tickers = get_tickers(sheet)
+    # prices = get_prices(tickers)
+    # buyprices = get_buyprices(sheet)
+    # companies = construct_companies(tickers, prices, buyprices)
+    # print(sheet, tickers, prices, buyprices, companies)
+    # email_buyprice(companies)
+
 
 def init_spreadsheet():
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
     creds = ServiceAccountCredentials.from_json_keyfile_name(
-        '/home/qkessler/Documents/watchlist_script/client_secret.json', scope)
+        , scope)
     client = gspread.authorize(creds)
     sheet = client.open('WATCHLIST').sheet1
     return sheet
@@ -75,12 +93,3 @@ def email_buyprice(companies):
                 subject = f'Company {company.ticker} is on sale!'
                 app_log.trace(f'Email was sent on company "{company.ticker}"')
                 send_email(body, subject)
-
-
-def main():
-    sheet = init_spreadsheet()
-    tickers = get_tickers(sheet)
-    prices = get_prices(tickers)
-    buyprices = get_buyprices(sheet)
-    companies = construct_companies(tickers, prices, buyprices)
-    email_buyprice(companies)

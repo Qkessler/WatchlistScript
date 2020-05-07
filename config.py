@@ -1,4 +1,0 @@
-mailToAddress = ""
-mailServer = ""
-mailFromAddress = ""
-mailFromPassword = ""
