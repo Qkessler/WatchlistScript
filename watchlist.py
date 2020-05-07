@@ -2,6 +2,7 @@ import os
 import yfinance
 import re
 import gspread
+import json
 from oauth2client.service_account import ServiceAccountCredentials
 from send_email import send_email
 from collections import namedtuple
@@ -11,29 +12,25 @@ from datetime import datetime, timedelta
 Company = namedtuple('Company', 'ticker price buyprice')
 app_log = logbook.Logger('App')
 
-MAIL_TO_ADDRESS = os.environ['MAIL_TO_ADDRESS']
-MAIL_SERVER = os.environ['MAIL_SERVER']
-MAIL_FROM_ADDRESS = os.environ['MAIL_FROM_ADDRESS']
-MAIL_FROM_PASSWORD = os.environ['MAIL_FROM_PASSWORD']
-CLIENT_SECRET = os.environ['CLIENT_SECRET']
+CLIENT_SECRET_FILE = os.environ['CLIENT_SECRET_FILE']
 
 
 def main():
-    print(CLIENT_SECRET)
-    # sheet = init_spreadsheet()
-    # tickers = get_tickers(sheet)
-    # prices = get_prices(tickers)
-    # buyprices = get_buyprices(sheet)
-    # companies = construct_companies(tickers, prices, buyprices)
-    # print(sheet, tickers, prices, buyprices, companies)
+    sheet = init_spreadsheet()
+    tickers = get_tickers(sheet)
+    prices = get_prices(tickers)
+    buyprices = get_buyprices(sheet)
+    companies = construct_companies(tickers, prices, buyprices)
+    print(sheet, tickers, prices, buyprices, companies)
     # email_buyprice(companies)
 
 
 def init_spreadsheet():
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
+        client_secret_file = json.loads(json_file)
     creds = ServiceAccountCredentials.from_json_keyfile_name(
-        , scope)
+        client_secret_file, scope)
     client = gspread.authorize(creds)
     sheet = client.open('WATCHLIST').sheet1
     return sheet
