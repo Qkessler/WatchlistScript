@@ -4,7 +4,17 @@ This is the repo of a script used to email me all the companies as they go on sa
 # Before starting
 * Before starting send emails, there are some steps to take. The main workflow of this app is through google sheets. That said, I set the app with my personal google sheet where I will be putting my watchlist companies.
 
-	![Init spreadsheet](resources/init_spreadsheet.png)
+	``` python
+		def init_spreadsheet():
+    scope = ['https://spreadsheets.google.com/feeds',
+             'https://www.googleapis.com/auth/drive']
+    creds = ServiceAccountCredentials.from_json_keyfile_name(
+        CLIENT_SECRET_FILE, scope)
+    client = gspread.authorize(creds)
+    sheet = client.open('WATCHLIST').sheet1
+    return sheet
+
+	```
 
 	This is using the **client_secret.json** file, which is given by Google's APIs when you create a proyect. Also, the line
 
