@@ -1,4 +1,4 @@
-# watchlist_script
+# WatchlistScript
 This is the repo of a script used to email me all the companies as they go on sale in my watchlist.
 
 # Before starting
