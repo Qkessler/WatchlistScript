@@ -21,16 +21,14 @@ def main():
     prices = get_prices(tickers)
     buyprices = get_buyprices(sheet)
     companies = construct_companies(tickers, prices, buyprices)
-    print(sheet, tickers, prices, buyprices, companies)
-    # email_buyprice(companies)
+    email_buyprice(companies)
 
 
 def init_spreadsheet():
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
-        client_secret_file = json.loads(json_file)
     creds = ServiceAccountCredentials.from_json_keyfile_name(
-        client_secret_file, scope)
+        CLIENT_SECRET_FILE, scope)
     client = gspread.authorize(creds)
     sheet = client.open('WATCHLIST').sheet1
     return sheet
@@ -68,12 +66,16 @@ def construct_companies(tickers, prices, buyprices):
     return companies
 
 
+def get_db_path(base_file):
+    base_folder = os.path.dirname(__file__)
+    return os.path.join(base_folder, base_file)
+
+
 def email_buyprice(companies):
     week = timedelta(days=7)
     for company in companies:
         last_company = None
-        with open('/home/qkessler/Documents/watchlist_script/watchlist.log',
-                  'r') as f:
+        with open(get_db_path('watchlist.log'), 'r') as f:
             for line in f.readlines():
                 if company.ticker in line:
                     last_company = line
