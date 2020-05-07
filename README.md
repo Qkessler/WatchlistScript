@@ -46,5 +46,5 @@ This app is useful if we are working with a spreadsheet already, or we are willi
 ![Example of spreadsheet](resources/example_spreadsheet.png)
 
 # Installation
-Just clone this repo and run the **program.py** file inside the virtual environment created with venv. I recommend setting up a way for the program to run in the background as you log in your computer, it will just email you at the right times.
+Clone the repo and inside an virtual environment install the requirements inside the requirements.txt file. Run the **program.py** to run the script.
 
