@@ -1,7 +1,7 @@
 certifi==2019.11.28
 chardet==3.0.4
 gspread==3.3.0
-httplib2==0.17.0
+httplib2==0.18.0
 idna==2.9
 Logbook==1.5.3
 multitasking==0.0.9
