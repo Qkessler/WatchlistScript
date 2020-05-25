@@ -2,11 +2,8 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
-
-MAIL_TO_ADDRESS = os.environ['MAIL_TO_ADDRESS']
-MAIL_SERVER = os.environ['MAIL_SERVER']
-MAIL_FROM_ADDRESS = os.environ['MAIL_FROM_ADDRESS']
-MAIL_FROM_PASSWORD = os.environ['MAIL_FROM_PASSWORD']
+from secret_config import (MAIL_FROM_ADDRESS, MAIL_SERVER,
+                           MAIL_FROM_PASSWORD, MAIL_TO_ADDRESS)
 
 
 def send_email(body, subject):

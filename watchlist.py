@@ -6,13 +6,12 @@ import json
 from oauth2client.service_account import ServiceAccountCredentials
 from send_email import send_email
 from collections import namedtuple
+from secret_config import CLIENT_SECRET_FILE
 import logbook
 from datetime import datetime, timedelta
 
 Company = namedtuple('Company', 'ticker price buyprice')
 app_log = logbook.Logger('App')
-
-CLIENT_SECRET_FILE = os.environ['CLIENT_SECRET_FILE']
 
 
 def main():
