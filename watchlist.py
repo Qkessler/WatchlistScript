@@ -26,8 +26,9 @@ def main():
 def init_spreadsheet():
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name(
-        CLIENT_SECRET_FILE, scope)
+    with open('client_secret.json', 'r') as json_file:
+        json_dict = json.load(json_file)
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(json_dict, scope)
     client = gspread.authorize(creds)
     sheet = client.open('WATCHLIST').sheet1
     return sheet
