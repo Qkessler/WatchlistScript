@@ -1,4 +1,5 @@
 #!/bin/bash
 
-
-~/Documents/watchlist_script/.env/bin/python3 ~/Documents/watchlist_script/program.py 
+cd ~/Documents/watchlist_script/
+source .env/bin/activate 
+python3 program.py 
